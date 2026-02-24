@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanshita Sabnani — Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Vanshita Sabnani — App Developer, Power BI Dashboard Creator, and Video Editor. Building clean, functional, and impactful digital solutions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">VS<span class="neon-dot">.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div id="three-canvas"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Available for Freelance Projects
+            </div>
+            <p class="hero-name">Vanshita Sabnani</p>
+            <h1 class="hero-title">
+                <span class="line">I Build,</span>
+                <span class="line">Visualize &</span>
+                <span class="line gradient-text">Create.</span>
+            </h1>
+            <p class="hero-subtitle">App Developer <span class="separator">|</span> Power BI Dashboard Creator <span
+                    class="separator">|</span> Video Editor</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">
+                    <span>View My Work</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span>Hire Me</span>
+                    <i class="fas fa-paper-plane"></i>
+                </a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-user"></i> About Me</span>
+                <h2 class="section-title">Turning Ideas Into <span class="gradient-text">Digital Reality</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <div class="about-image-card glass-card">
+                        <div class="about-avatar">
+                            <span class="avatar-text">VS</span>
+                        </div>
+                        <div class="about-image-glow"></div>
+                    </div>
+                    <div class="about-float-card glass-card-mini float-1">
+                        <i class="fas fa-code"></i>
+                        <span>Developer</span>
+                    </div>
+                    <div class="about-float-card glass-card-mini float-2">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analyst</span>
+                    </div>
+                    <div class="about-float-card glass-card-mini float-3">
+                        <i class="fas fa-film"></i>
+                        <span>Editor</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <p class="about-text">
+                        I am a <strong>tech-driven creator</strong> with skills in app development, data visualization,
+                        and video editing. I focus on building <strong>clean, functional, and impactful</strong> digital
+                        solutions.
+                    </p>
+                    <p class="about-text">
+                        My passion lies at the intersection of technology and creativity — crafting experiences that not
+                        only work flawlessly but also tell a compelling story through design and data.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-bolt"></i></div>
+                            <div>
+                                <h4>Fast Delivery</h4>
+                                <p>Quick turnaround without compromising quality</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-palette"></i></div>
+                            <div>
+                                <h4>Creative Vision</h4>
+                                <p>Unique designs that stand out</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <h4>Reliable Results</h4>
+                                <p>Consistent and dependable work</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-star"></i> My Skills</span>
+                <h2 class="section-title">What I <span class="gradient-text">Bring to the Table</span></h2>
+            </div>
+            <div class="skills-grid">
+                <!-- App Development -->
+                <div class="skill-card glass-card" data-tilt>
+                    <div class="skill-card-glow"></div>
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                    <h3 class="skill-title">App Development</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> Web & automation-based apps</li>
+                        <li><i class="fas fa-check-circle"></i> Clean UI</li>
+                        <li><i class="fas fa-check-circle"></i> Logic-based systems</li>
+                        <li><i class="fas fa-check-circle"></i> User-focused solutions</li>
+                    </ul>
+                    <div class="skill-progress">
+                        <div class="progress-label">
+                            <span>Proficiency</span>
+                            <span class="progress-value">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="90"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Power BI -->
+                <div class="skill-card glass-card" data-tilt>
+                    <div class="skill-card-glow"></div>
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon icon-bi">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                    </div>
+                    <h3 class="skill-title">Power BI & Data Viz</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> Interactive dashboards</li>
+                        <li><i class="fas fa-check-circle"></i> KPI tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Business insights</li>
+                        <li><i class="fas fa-check-circle"></i> Data storytelling</li>
+                    </ul>
+                    <div class="skill-progress">
+                        <div class="progress-label">
+                            <span>Proficiency</span>
+                            <span class="progress-value">85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Editing -->
+                <div class="skill-card glass-card" data-tilt>
+                    <div class="skill-card-glow"></div>
+                    <div class="skill-icon-wrapper">
+                        <div class="skill-icon icon-video">
+                            <i class="fas fa-video"></i>
+                        </div>
+                    </div>
+                    <h3 class="skill-title">Video Editing</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-check-circle"></i> Social media content editing</li>
+                        <li><i class="fas fa-check-circle"></i> Promotional videos</li>
+                        <li><i class="fas fa-check-circle"></i> Subtitles & motion text</li>
+                        <li><i class="fas fa-check-circle"></i> Engagement-focused editing</li>
+                    </ul>
+                    <div class="skill-progress">
+                        <div class="progress-label">
+                            <span>Proficiency</span>
+                            <span class="progress-value">80%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-folder-open"></i> My Work</span>
+                <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1: Power BI Dashboard -->
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <img src="dashboard.png" alt="Power BI Dashboard" class="project-img">
+                        <div class="project-overlay">
+                            <span class="project-tag">Dashboard</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Power BI Dashboard</h3>
+                        <p class="project-desc">Interactive dashboard showing KPIs, trends, and insights for data-driven
+                            business decisions. Google Takeout data analysis.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Vanshita519/google-takeout-data-analysis" target="_blank"
+                                rel="noopener" class="project-link"><i class="fab fa-github"></i> GitHub Repo</a>
+                            <a href="https://www.linkedin.com/posts/vanshita-sabnani-33737733a_dataanalytics-powerbi-careerpivot-activity-7428447914324017152-FKPl?utm_source=social_share_send&utm_medium=member_desktop_web"
+                                target="_blank" rel="noopener" class="project-link"><i class="fab fa-linkedin-in"></i>
+                                LinkedIn Post</a>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Data Analysis</span>
+                            <span class="tech-tag">DAX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: More Power BI Work -->
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <div class="project-video-wrapper">
+                            <video src="sample2.mp4" loop playsinline preload="metadata" controls
+                                class="project-video"></video>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="project-tag">Video</span>
+                            <span class="project-tag">Data Viz</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Data Visualization Showcase</h3>
+                        <p class="project-desc">Learning by doing — exploring Power BI and tech-driven data
+                            visualization techniques.</p>
+                        <div class="project-links">
+                            <a href="https://www.linkedin.com/posts/vanshita-sabnani-33737733a_learningbydoing-tech-powerbi-activity-7303708278826418176-E9cd?utm_source=social_share_send&utm_medium=member_desktop_web"
+                                target="_blank" rel="noopener" class="project-link"><i class="fab fa-linkedin-in"></i>
+                                LinkedIn Post</a>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">Data Storytelling</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: AI Voice Agent -->
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <div class="project-video-wrapper">
+                            <video src="sample3.mp4" loop playsinline preload="metadata" controls
+                                class="project-video"></video>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="project-tag">AI</span>
+                            <span class="project-tag">Voice</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">AI Voice Agent</h3>
+                        <p class="project-desc">Built an AI-powered voice assistant using VAPI — enabling natural voice
+                            interactions and automation.</p>
+                        <div class="project-links">
+                            <a href="https://www.linkedin.com/posts/vanshita-sabnani-33737733a_ai-voiceassistant-vapi-activity-7293919812940898304-23cq?utm_source=social_share_send&utm_medium=member_desktop_web"
+                                target="_blank" rel="noopener" class="project-link"><i class="fab fa-linkedin-in"></i>
+                                LinkedIn Post</a>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">AI</span>
+                            <span class="tech-tag">VAPI</span>
+                            <span class="tech-tag">Voice Assistant</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Startup Video Editing (Confidential) -->
+                <div class="project-card glass-card">
+                    <div class="project-image">
+                        <div class="project-placeholder placeholder-video">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <span class="project-tag">Video</span>
+                            <span class="project-tag confidential">Confidential</span>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Startup Video Editing</h3>
+                        <p class="project-desc">Edited promotional content for startups. Improved engagement and
+                            retention.</p>
+                        <p class="project-note"><i class="fas fa-lock"></i> Due to client confidentiality, full videos
+                            cannot be displayed publicly.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Premiere Pro</span>
+                            <span class="tech-tag">After Effects</span>
+                            <span class="tech-tag">Motion Graphics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-briefcase"></i> Services</span>
+                <h2 class="section-title">What I <span class="gradient-text">Offer</span></h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card glass-card">
+                    <div class="service-number">01</div>
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                    <h3>App Development</h3>
+                    <p>Building clean, functional web and automation-based applications tailored to your needs.</p>
+                    <div class="service-line"></div>
+                </div>
+                <div class="service-card glass-card">
+                    <div class="service-number">02</div>
+                    <div class="service-icon"><i class="fas fa-chart-bar"></i></div>
+                    <h3>Dashboard Creation</h3>
+                    <p>Interactive Power BI dashboards with KPI tracking, business insights, and data storytelling.</p>
+                    <div class="service-line"></div>
+                </div>
+                <div class="service-card glass-card">
+                    <div class="service-number">03</div>
+                    <div class="service-icon"><i class="fas fa-film"></i></div>
+                    <h3>Video Editing</h3>
+                    <p>Professional video editing for digital content, social media, and promotional campaigns.</p>
+                    <div class="service-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag"><i class="fas fa-envelope"></i> Get in Touch</span>
+                <h2 class="section-title">Let's <span class="gradient-text">Work Together</span></h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card glass-card">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:vanshita986@gmail.com">vanshita986@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/vanshita-sabnani-33737733a" target="_blank"
+                                    rel="noopener">linkedin.com/in/vanshita-sabnani</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fab fa-github"></i></div>
+                            <div>
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/Vanshita519" target="_blank"
+                                    rel="noopener">github.com/Vanshita519</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-card glass-card">
+                        <span class="status-dot"></span>
+                        <span>Open for Freelance Projects</span>
+                    </div>
+                </div>
+                <form class="contact-form glass-card" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#hero" class="footer-logo">VS<span class="neon-dot">.</span></a>
+                <p class="footer-text">Designed & Built by Vanshita Sabnani</p>
+                <div class="footer-socials">
+                    <a href="mailto:vanshita986@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/vanshita-sabnani-33737733a" target="_blank" rel="noopener"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/Vanshita519" target="_blank" rel="noopener" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
