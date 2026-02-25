@@ -27,22 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
             this.x = Math.random() * particlesCanvas.width;
             this.y = Math.random() * particlesCanvas.height;
             this.size = Math.random() * 2 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.4;
-            this.speedY = (Math.random() - 0.5) * 0.4;
-            this.opacity = Math.random() * 0.5 + 0.1;
-            this.hue = Math.random() > 0.5 ? 200 : 220;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3;
+            this.opacity = Math.random() * 0.4 + 0.08;
+            this.hue = Math.random() > 0.5 ? 200 : 260;
         }
         update() {
             this.x += this.speedX;
             this.y += this.speedY;
 
-            // Mouse interaction
             const dx = mousePos.x - this.x;
             const dy = mousePos.y - this.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < 120) {
-                this.x -= dx * 0.01;
-                this.y -= dy * 0.01;
+                this.x -= dx * 0.008;
+                this.y -= dy * 0.008;
             }
 
             if (this.x < 0 || this.x > particlesCanvas.width) this.speedX *= -1;
@@ -51,14 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
         draw() {
             pCtx.beginPath();
             pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            pCtx.fillStyle = `hsla(${this.hue}, 100%, 60%, ${this.opacity})`;
+            pCtx.fillStyle = `hsla(${this.hue}, 100%, 65%, ${this.opacity})`;
             pCtx.fill();
         }
     }
 
     function initParticles() {
         particles = [];
-        const count = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 12000), 120);
+        const count = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 14000), 100);
         for (let i = 0; i < count; i++) {
             particles.push(new Particle());
         }
@@ -71,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 150) {
-                    const opacity = (1 - dist / 150) * 0.15;
+                if (dist < 140) {
+                    const opacity = (1 - dist / 140) * 0.12;
                     pCtx.beginPath();
                     pCtx.moveTo(particles[i].x, particles[i].y);
                     pCtx.lineTo(particles[j].x, particles[j].y);
@@ -114,24 +113,24 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     threeContainer.appendChild(renderer.domElement);
 
-    // Abstract rotating geometry — Icosahedron wireframe
+    // Icosahedron wireframe
     const geometry = new THREE.IcosahedronGeometry(1.8, 1);
     const wireframeMaterial = new THREE.MeshBasicMaterial({
         color: 0x00b4ff,
         wireframe: true,
         transparent: true,
-        opacity: 0.15,
+        opacity: 0.12,
     });
     const mesh = new THREE.Mesh(geometry, wireframeMaterial);
     scene.add(mesh);
 
-    // Inner glowing sphere
+    // Inner sphere
     const innerGeo = new THREE.IcosahedronGeometry(1.2, 2);
     const innerMat = new THREE.MeshBasicMaterial({
         color: 0x7b2dff,
         wireframe: true,
         transparent: true,
-        opacity: 0.08,
+        opacity: 0.06,
     });
     const innerMesh = new THREE.Mesh(innerGeo, innerMat);
     scene.add(innerMesh);
@@ -141,13 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const ringMat = new THREE.MeshBasicMaterial({
         color: 0x00b4ff,
         transparent: true,
-        opacity: 0.2,
+        opacity: 0.18,
     });
     const ring = new THREE.Mesh(ringGeo, ringMat);
     ring.rotation.x = Math.PI / 3;
     scene.add(ring);
 
-    // Dot particles around 3D object
+    // Dot particles
     const dotsGeometry = new THREE.BufferGeometry();
     const dotsCount = 200;
     const dotsPositions = new Float32Array(dotsCount * 3);
@@ -164,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         color: 0x00f0ff,
         size: 0.03,
         transparent: true,
-        opacity: 0.6,
+        opacity: 0.5,
     });
     const dots = new THREE.Points(dotsGeometry, dotsMaterial);
     scene.add(dots);
@@ -180,20 +179,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const time = Date.now() * 0.001;
 
-        mesh.rotation.x += 0.003;
-        mesh.rotation.y += 0.005;
+        mesh.rotation.x += 0.002;
+        mesh.rotation.y += 0.004;
 
-        innerMesh.rotation.x -= 0.004;
-        innerMesh.rotation.y -= 0.003;
+        innerMesh.rotation.x -= 0.003;
+        innerMesh.rotation.y -= 0.002;
 
-        ring.rotation.z += 0.002;
+        ring.rotation.z += 0.0015;
 
         dots.rotation.y += 0.001;
         dots.rotation.x += 0.0005;
 
-        // Subtle mouse interaction
-        mesh.rotation.x += mouseY * 0.002;
-        mesh.rotation.y += mouseX * 0.002;
+        // Mouse parallax on 3D object
+        mesh.rotation.x += mouseY * 0.003;
+        mesh.rotation.y += mouseX * 0.003;
 
         // Breathing effect
         const scale = 1 + Math.sin(time * 0.5) * 0.03;
@@ -210,6 +209,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================
+    // Blob Parallax on Mouse Move
+    // ========================
+    const blobs = document.querySelectorAll('.blob');
+    document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        blobs.forEach((blob, i) => {
+            const speed = (i + 1) * 8;
+            blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        });
+    });
+
+    // ========================
     // Navbar Scroll Effect
     // ========================
     const navbar = document.getElementById('navbar');
@@ -219,7 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
 
-        // Navbar background
         if (scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
@@ -268,7 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
 
-    // Check saved theme
     const savedTheme = localStorage.getItem('theme') || 'dark';
     html.setAttribute('data-theme', savedTheme);
 
@@ -281,11 +291,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update Three.js colors
         if (next === 'light') {
             wireframeMaterial.color.setHex(0x0088cc);
-            wireframeMaterial.opacity = 0.2;
+            wireframeMaterial.opacity = 0.18;
             ringMat.color.setHex(0x0088cc);
         } else {
             wireframeMaterial.color.setHex(0x00b4ff);
-            wireframeMaterial.opacity = 0.15;
+            wireframeMaterial.opacity = 0.12;
             ringMat.color.setHex(0x00b4ff);
         }
     });
@@ -295,14 +305,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================
     const revealElements = document.querySelectorAll(
         '.about-grid, .about-image-wrapper, .about-content, ' +
-        '.skill-card, .project-card, .service-card, ' +
+        '.skill-card, .project-card, .project-category, ' +
+        '.experience-card, .category-header, ' +
         '.contact-info, .contact-form, .section-header'
     );
 
     revealElements.forEach(el => el.classList.add('reveal'));
 
-    // Add stagger delays to card grids
-    document.querySelectorAll('.skill-card, .project-card, .service-card').forEach((card, i) => {
+    // Stagger delays for card grids
+    document.querySelectorAll('.skill-card, .project-card').forEach((card, i) => {
         const delay = (i % 3) + 1;
         card.classList.add(`reveal-delay-${delay}`);
     });
@@ -315,8 +326,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
     });
 
     revealElements.forEach(el => observer.observe(el));
@@ -340,34 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBars.forEach(bar => progressObserver.observe(bar));
 
     // ========================
-    // Counter Animation
-    // ========================
-    const counters = document.querySelectorAll('.stat-number');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const target = parseInt(el.getAttribute('data-count'));
-                let current = 0;
-                const increment = target / 40;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        el.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        el.textContent = Math.ceil(current);
-                    }
-                }, 40);
-                counterObserver.unobserve(el);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counters.forEach(c => counterObserver.observe(c));
-
-    // ========================
-    // 3D Tilt Effect on Skill Cards
+    // 3D Tilt on Skill Cards
     // ========================
     const tiltCards = document.querySelectorAll('[data-tilt]');
     tiltCards.forEach(card => {
@@ -377,12 +361,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -8;
-            const rotateY = ((x - centerX) / centerX) * 8;
+            const rotateX = ((y - centerY) / centerY) * -6;
+            const rotateY = ((x - centerX) / centerX) * 6;
 
             card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
 
-            // Move glow
             const glow = card.querySelector('.skill-card-glow');
             if (glow) {
                 glow.style.top = `${y - rect.height}px`;
@@ -396,9 +379,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================
-    // Contact Form Handler (mailto)
+    // Subtle Tilt on Project Cards
+    // ========================
+    const projectTiltCards = document.querySelectorAll('[data-tilt-card]');
+    projectTiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -3;
+            const rotateY = ((x - centerX) / centerX) * 3;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+    });
+
+    // ========================
+    // Contact Form Handler
     // ========================
     const form = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('name').value.trim();
@@ -411,15 +418,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const body = encodeURIComponent(`Hi Vanshita,\n\n${message}\n\n---\nFrom: ${name}\nEmail: ${email}`);
         window.open(`mailto:vanshita986@gmail.com?subject=${subject}&body=${body}`, '_self');
 
+        // Show success message
+        formSuccess.classList.add('show');
+
         const btn = form.querySelector('button');
-        const originalContent = btn.innerHTML;
-        btn.innerHTML = '<span>Opening Email Client...</span> <i class="fas fa-check"></i>';
         btn.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
+        btn.innerHTML = '<span>Message Sent!</span> <i class="fas fa-check"></i>';
+
         setTimeout(() => {
-            btn.innerHTML = originalContent;
+            btn.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>';
             btn.style.background = '';
+            formSuccess.classList.remove('show');
             form.reset();
-        }, 3000);
+        }, 4000);
     });
 
     // ========================
